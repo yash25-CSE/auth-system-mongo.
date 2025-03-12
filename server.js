@@ -6,6 +6,7 @@ const User = require("./models/User");
 const sendOTP = require("./utils/sendOtp");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -18,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join("signup.html"));
+  res.sendFile(path.join(__dirname, "signup.html"));
 });
 
 // Signup Route
