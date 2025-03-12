@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <script defer src="signup.js"></script>
+</head>
+<body>
+  <h2>Signup</h2>
+  <form id="signup-form">
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="number" id="age" placeholder="Age" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="tel" id="phone" placeholder="Phone" required />
+    <input type="password" id="password" placeholder="Password" required />
+
+    <label>Sex:</label>
+    <input type="radio" name="sex" value="Male" required /> Male
+    <input type="radio" name="sex" value="Female" required /> Female
+    <input type="radio" name="sex" value="Other" required /> Other
+
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <div id="otpSection" style="display: none;">
+    <input id="otp" type="text" placeholder="Enter OTP" required>
+    <button id="verify-btn">Verify OTP</button>
+  </div>
+
+  <button onclick="window.location.href='login.html'">Already have an account? Login</button>
+</body>
+</html>

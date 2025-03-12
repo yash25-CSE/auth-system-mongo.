@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <h2>Welcome to the Dashboard</h2>
+  
+  <button id="logout-btn">Logout</button>
+
+  <script>
+    // Redirect to signup if not logged in
+    if (!localStorage.getItem("token")) {
+      window.location.href = "signup.html";
+    }
+
+    // Logout Button Functionality
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    });
+
+    // Session Timeout (1 minute)
+    setTimeout(() => {
+      localStorage.removeItem("token");
+      alert("Session expired. Please login again.");
+      window.location.href = "signup.html";
+    }, 60000); // 1 minute timeout
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <h2>Welcome to the Dashboard</h2>
+
+  <div id="user-info">
+    <h3>User Information:</h3>
+    <p><strong>Name:</strong> <span id="user-name"></span></p>
+    <p><strong>Email:</strong> <span id="user-email"></span></p>
+    <p><strong>Phone:</strong> <span id="user-phone"></span></p>
+    <p><strong>Age:</strong> <span id="user-age"></span></p>
+    <p><strong>Sex:</strong> <span id="user-sex"></span></p>
+  </div>
+
+  <button id="logout-btn">Logout</button>
+
+  <script>
+    // Redirect to login if not logged in
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+
+    // Load user data from localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      document.getElementById("user-name").textContent = user.name;
+      document.getElementById("user-email").textContent = user.email;
+      document.getElementById("user-phone").textContent = user.phone;
+      document.getElementById("user-age").textContent = user.age;
+      document.getElementById("user-sex").textContent = user.sex;
+    }
+
+    // Logout Button
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user"); // Clear user data
+      window.location.href = "login.html";
+    });
+
+    // Auto Logout after 1 minute
+    setTimeout(() => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user"); // Clear user data
+      alert("Session expired. Please login again.");
+      window.location.href = "login.html";
+    }, 60000); // 1 minute timeout
+  </script>
+</body>
+</html>
