@@ -17,6 +17,10 @@ mongoose.connect(process.env.MONGO_URI)
 
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join("signup.html"));
+});
+
 // Signup Route
 app.post("/api/signup", async (req, res) => {
   try {
